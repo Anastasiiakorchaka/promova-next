@@ -1,15 +1,10 @@
 import { fetchAPI } from '@/lib/api';
 import PostDetails from '@/components/PostDetails';
-
-interface Params {
-  slug: string;
+interface Props {
+  params: { slug: string };
 }
 
-interface PageProps {
-  params: Params;
-}
-
-export default async function PostPage({ params }: PageProps) {
+export default async function PostPage({ params }: Props) {
   const { slug } = params;
   const data = await fetchAPI(`/posts?filters[slug][$eq]=${slug}&populate=image`);
   const post = data.data[0];
