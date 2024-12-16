@@ -7,8 +7,8 @@ interface Props {
 
 export default async function PostPage({ params }: Props) {
 
-  const par = await params || {};
-  const data = await fetchAPI(`/posts?filters[slug][$eq]=${par.slug}&populate=image`);
+  const { slug } = params;
+  const data = await fetchAPI(`/posts?filters[slug][$eq]=${slug}&populate=image`);
   const post = data.data[0];
 
   if (!post) {
