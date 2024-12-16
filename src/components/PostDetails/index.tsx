@@ -18,7 +18,7 @@ interface Post {
 }
 
 export default function PostDetails({ post }: { post: Post }) {
-  console.log(post)
+  console.log('jjj', post)
   return (
     <Container>
       <Grid md={8} xs={12} sx={{ p: 3 }}>

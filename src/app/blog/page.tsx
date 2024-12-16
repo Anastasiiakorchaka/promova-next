@@ -1,7 +1,7 @@
 import { fetchAPI } from '@/lib/api';
 import BlogList from '@/components/BlogList';
 
-export default async function BlogPage({ searchParams }: { searchParams: { page?: string } }) {
+export default async function BlogPage({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
   const PAGE_SIZE = 5;
 
   const params = await searchParams || {};
