@@ -17,6 +17,7 @@ interface Post {
 }
 
 interface Props {
+  baseUrl?: string;
   posts: Post[];
   pagination: {
     page: number;
@@ -25,7 +26,7 @@ interface Props {
   currentPage: number;
 }
 
-export default function BlogList({ posts, pagination, currentPage }: Props) {
+export default function BlogList({ posts, pagination, currentPage, baseUrl }: Props) {
   const [search, setSearch] = useState('');
 
   const filteredPosts = posts.filter((post) =>
@@ -60,7 +61,7 @@ export default function BlogList({ posts, pagination, currentPage }: Props) {
                 <CardMedia
                   component="img"
                   height="140"
-                  image={process.env.BASE_API_URL + post.image?.url || '/placeholder.jpg'}
+                  image={baseUrl + post.image?.url || '/placeholder.jpg'}
                   alt={post.title}
                 />
                 <CardContent>

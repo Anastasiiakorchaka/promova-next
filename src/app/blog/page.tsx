@@ -3,6 +3,7 @@ import BlogList from '@/components/BlogList';
 
 export default async function BlogPage({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
   const PAGE_SIZE = 5;
+  const baseUrl = process.env.BASE_URL;
 
   const params = await searchParams || {};
   const currentPage = params.page ? parseInt(params.page) : 1;
@@ -11,5 +12,5 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
   const posts = data.data;
   const meta = data.meta.pagination;
 
-  return <BlogList posts={posts} pagination={meta} currentPage={currentPage} />;
+  return <BlogList posts={posts} pagination={meta} currentPage={currentPage} baseUrl={baseUrl} />;
 }
