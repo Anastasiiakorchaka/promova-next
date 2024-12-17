@@ -17,7 +17,7 @@ interface Post {
   };
 }
 
-export default function PostDetails({ post }: { post: Post }) {
+export default function PostDetails({ post, baseUrl }: { baseUrl?: string; post: Post }) {
   console.log('jjj', post)
   return (
     <Container>
@@ -31,7 +31,7 @@ export default function PostDetails({ post }: { post: Post }) {
         <Card sx={{ my: 2 }}>
           <CardMedia
             component="img"
-            image={process.env.BASE_API_URL + post.image?.url || '/placeholder.jpg'}
+            image={baseUrl + post.image?.url || '/placeholder.jpg'}
             alt={post.title}
           />
         </Card>
